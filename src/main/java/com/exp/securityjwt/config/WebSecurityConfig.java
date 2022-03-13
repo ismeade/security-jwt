@@ -1,4 +1,4 @@
-package com.exp.security.config;
+package com.exp.securityjwt.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,21 +16,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
-        return new JwtAuthenticationTokenFilter();
+        return new JwtAuthenticationTokenFilter(authenticationManager());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
+
                 .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class)
                 // 不创建session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeRequests()
-
-//                .antMatchers(
-//                        "/auth/**"
-//                ).permitAll()
+                // 鉴权接口不需要认证
+                .antMatchers("/auth/**").permitAll()
+                // 都需要认证 放到最后
                 .anyRequest().authenticated()
         ;
 

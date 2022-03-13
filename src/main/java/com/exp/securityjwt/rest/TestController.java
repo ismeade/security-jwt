@@ -1,19 +1,20 @@
-package com.exp.security.rest;
+package com.exp.securityjwt.rest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
-@RequestMapping("/auth")
-@PreAuthorize("hasRole('ROLE_GUEST')") // hasRole需要带前缀写法 ROLE_xxxx 同时userDetails的权限里也有ROLE_xxxx
-//@PreAuthorize("hasAuthority('auth')") // userDetails包含auth就行
-public class AuthController {
+@RequestMapping("/test")
+//@PreAuthorize("hasAuthority('test')") // userDetails包含auth就行
+@PreAuthorize("isAuthenticated()")
+public class TestController {
 
     @GetMapping("")
-    public String hello() {
+    public String test() {
         return "hello";
     }
-
 }

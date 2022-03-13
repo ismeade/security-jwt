@@ -1,0 +1,21 @@
+# Server configuration
+server:
+  port: 8080
+  contextPath:
+
+# Spring configuration
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+# Logging configuration
+logging:
+  level:
+    org.springframework:
+      data: DEBUG
+      security: DEBUG
+
+jwt:
+  secret: 1234567890
+  exp: 1800

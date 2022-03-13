@@ -88,7 +88,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>com.exp.security.SecurityJwtApplication</mainClass>
+                    <mainClass>com.exp.securityjwt.SecurityJwtApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
