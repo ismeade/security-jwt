@@ -30,8 +30,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 鉴权接口不需要认证
                 .antMatchers("/auth/**").permitAll()
-                // 都需要认证 放到最后
-                .anyRequest().authenticated()
+                // 都需要认证 放到最后 类上的@PreAuthorize("permitAll") 无效 注释掉以后完全放开，类上必须做验证
+                // TODO 不知道怎么样嫩让类上的注解优先与这边这句
+//                .anyRequest().authenticated()
         ;
 
         http.headers()

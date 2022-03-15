@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 //@PreAuthorize("hasAuthority('test')") // userDetails包含auth就行
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("permitAll")
 public class TestController {
 
     @GetMapping("")
